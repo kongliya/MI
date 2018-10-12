@@ -1,0 +1,51 @@
+@import "_reset.scss";
+.container{
+    width: 1100px;
+    margin: 0 auto;
+    height: 40px;
+    padding: 20px;
+    background: #ddd;
+    .cart-list{
+        height: 60px;
+        .empty{
+            width: 40px;
+            height: 40px;
+            background-image: url(../images/car1.png);
+            background-size: 40px 40px;
+            position: relative;
+            &.full{
+                background-image: url(../images/car2.png);
+            }
+            span{
+                width: 40px;
+                height: 40px;
+                position: absolute;
+                top: -40px;
+                right: -40px;
+            }
+        }
+    }
+    ul:after{
+        display: block;
+        clear: both;
+        content: "";
+    }
+    ul li{
+        float: left;
+        width: 220px;
+        img{
+            height: 360px;
+            width: 220px;
+            display: block;
+        }
+        .title{
+            margin: 10px 0;
+        }
+        button{
+            width: 220px;
+            border-radius: 5px;
+            background: #f99;
+        }
+    }
+    
+}
