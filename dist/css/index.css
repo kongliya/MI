@@ -46,13 +46,12 @@ table {
   border-spacing: 0; }
 
 .container {
-  width: 1100px;
-  margin: 0 auto;
   height: 40px;
   padding: 20px;
   background: #ddd; }
   .container .cart-list {
-    height: 60px; }
+    height: 60px;
+    width: 100%; }
     .container .cart-list .empty {
       width: 40px;
       height: 40px;
@@ -62,25 +61,51 @@ table {
       .container .cart-list .empty.full {
         background-image: url(../images/car2.png); }
       .container .cart-list .empty span {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         position: absolute;
-        top: -40px;
-        right: -40px; }
-  .container ul:after {
-    display: block;
-    clear: both;
-    content: ""; }
-  .container ul li {
+        top: -15px;
+        right: -15px;
+        background: red;
+        border-radius: 50%; }
+      .container .cart-list .empty .cart-lists {
+        width: 180px;
+        background: #f99;
+        position: absolute;
+        top: 40px; }
+      .container .cart-list .empty .small-img img {
+        float: left;
+        width: 60px;
+        height: 80px; }
+      .container .cart-list .empty .title {
+        float: left;
+        margin: 30px 10px 0; }
+  .container ul {
+    width: 1200px;
+    margin: 0 auto; }
+  .container ul .con {
     float: left;
-    width: 220px; }
-    .container ul li img {
-      height: 360px;
+    width: 220px;
+    margin: 10px;
+    box-shadow: 0 0 5px #ddd;
+    overflow: hidden; }
+    .container ul .con .large-img {
+      height: 220px;
       width: 220px;
       display: block; }
-    .container ul li .title {
-      margin: 10px 0; }
-    .container ul li button {
+    .container ul .con .title {
+      margin: 10px;
+      width: 190px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+    .container ul .con .goods-price {
+      font-size: 14px;
+      color: #ff6700;
+      text-align: center;
+      margin-bottom: 10px; }
+    .container ul .con button {
       width: 220px;
       border-radius: 5px;
-      background: #f99; }
+      background: #f99;
+      outline: none; }

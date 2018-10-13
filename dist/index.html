@@ -12,21 +12,82 @@
         <div class="cart-list">
             <div class="empty">
                 <span></span>
-                <ul>
-                    <li>
+                <ul class="cart-lists clearfix">
+                    <li class="small-img">
                         <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt="">
                         <p class="title">这是一个标题</p>
                     </li>
                 </ul>
             </div>
         </div>
-        <ul>
-            <li>
-                <img src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt="">
+        <ul class="lists clearfix">
+            <!-- <li class="con">
+                <img class="large-img" src="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p480747492.webp" alt="">
                 <p class="title">这是一个标题</p>
+                <p class="goods-price">1999</p>
                 <button>添加到购物车</button>
-            </li>
+            </li> -->
         </ul>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="jquery.cookie.js"></script>
+    <script>
+        function ShopCar(){}
+        $.extend(ShopCar.prototype,{
+            init(){
+                this.main = $(".lists");
+                this.loadJson()
+                .then(function(res){
+                    this.json = res.data.list.list;
+                    this.renderPage();
+                    // console.log(res.data.list);
+                })
+                this.bindEvent();
+                this.listSum();
+            },
+            loadJson(){
+                var opt = {
+                    url : "data.json",
+                    type : "GET",
+                    context : this
+                }
+                return $.ajax(opt);
+            },
+            renderPage(){
+                console.log(this.json);
+                var html = "";
+                for(var i = 0; i < this.json.length; i ++){
+                    html += `<li class="con">
+                                <img class="large-img" src="${this.json[i].img}" alt="">
+                                <p class="title">${this.json[i].goods_name}</p>
+                                <p class="goods-price">${this.json[i].goods_price} 元</p>
+                                <button data-id="${this.json[i].goods_id}">添加到购物车</button>
+                            </li>`;
+                            // console.log(this.main)
+                }
+                this.main.html(html);
+            },
+            bindEvent(){
+                $(".lists").on("click","button",this.addCar.bind(this));
+            },
+            addCar(event){
+                // 怎么知道将谁加入的购物车 => 通过 goods-id;
+                var target = event.target;
+                var goodsId = $(target).attr("data-id");
+                    console.log(goodsId);
+                // 将 id 加入 cookie;
+                $.cookie("shopCar",goodsId);
+
+                // cookie 是纯文本  所以 我们先需要将字符串转为数组;
+                // JSON.parse()  string => array;
+                // 加入购物车 需要 array 数组 ;
+                // JSON.stringify()  array => string;
+
+            },
+            listSum(){}
+        })
+        var shopCar = new ShopCar();
+        shopCar.init();
+    </script>
 </body>
 </html>

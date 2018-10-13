@@ -1,12 +1,12 @@
 @import "_reset.scss";
 .container{
-    width: 1100px;
-    margin: 0 auto;
+   
     height: 40px;
     padding: 20px;
     background: #ddd;
     .cart-list{
         height: 60px;
+        width: 100%;
         .empty{
             width: 40px;
             height: 40px;
@@ -17,34 +17,67 @@
                 background-image: url(../images/car2.png);
             }
             span{
-                width: 40px;
-                height: 40px;
+                width: 30px;
+                height: 30px;
                 position: absolute;
-                top: -40px;
-                right: -40px;
+                top: -15px;
+                right: -15px;
+                background: rgb(255, 0, 0);
+                border-radius: 50%;;
             }
+            .cart-lists{
+                width: 180px;
+                background: #f99;
+                position: absolute;
+                top: 40px;
+            }
+            .small-img{
+                img{
+                    float: left;
+                    width: 60px;
+                    height: 80px;
+                }
+            }
+            .title{
+                float: left;
+                margin: 30px 10px 0;
+            }
+            
         }
     }
-    ul:after{
-        display: block;
-        clear: both;
-        content: "";
+    ul{
+        width: 1200px;
+        margin: 0 auto;
     }
-    ul li{
+    ul .con{
         float: left;
         width: 220px;
-        img{
-            height: 360px;
+        margin: 10px;
+        box-shadow: 0 0 5px #ddd;
+        overflow: hidden;
+        .large-img{
+            height: 220px;
             width: 220px;
             display: block;
         }
         .title{
-            margin: 10px 0;
+            margin: 10px;
+            width: 190px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .goods-price{
+            font-size: 14px;
+            color: #ff6700;
+            text-align: center;
+            margin-bottom: 10px;
         }
         button{
             width: 220px;
             border-radius: 5px;
             background: #f99;
+            outline: none;
         }
     }
     
