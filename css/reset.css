@@ -33,6 +33,7 @@ u{
 a{
     text-decoration:none; 
     outline: none; 
+    color: #757575;
 }
 a:hover{
     text-decoration:none; 

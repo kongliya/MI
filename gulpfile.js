@@ -5,10 +5,10 @@ const gulp = require("gulp");
 const connect = require("gulp-connect");
 
 // 2. 合并插件;
-var concat = require("gulp-concat");
+// var concat = require("gulp-concat");
 
 // 3. gulp 压缩插件;
-var uglify = require("gulp-uglify");
+// var uglify = require("gulp-uglify");
 
 // 4. babel 插件;
 var babel = require("gulp-babel");
@@ -44,22 +44,21 @@ gulp.task('connect',function(){
 gulp.task("watch",()=>{
 	gulp.watch("index.html",["html","sass"]);
 	gulp.watch("sass/*.scss",["html","sass"]);
+	gulp.watch("js/*.js",["html","script"]);
 })
 
 gulp.task("default",["watch","connect"]);
 
 // script 转存指令;
 gulp.task("script", ()=>{
-    return gulp.src(["script/app/*.js","script/module/*.js","script/libs/*.js","!script/libs/jquery.js"])
-	.pipe(concat("main.js"))
-	.pipe(uglify())
+    return gulp.src(["js/*.js","!js/libs/jquery-3.3.1.js"])
     .pipe(gulp.dest("dist/script"));
 })
 
 // css 转存指令;
 gulp.task("css",()=>{
 	return gulp.src(["css/*.css"])
-	.pipe(clearCss())
+	.pipe(cleanCss())
 	.pipe(gulp.dest("dist/css"))
 })
 
