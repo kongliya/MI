@@ -962,5 +962,119 @@
     -webkit-transform: translate3d(0, -2px, 0);
     transform: translate3d(0, -2px, 0);
 }
+.home-banner-box-brick {
+    margin: 28px 0 22px;
+}
+.brick-item-s {
+    height: 93px;
+    padding-top: 50px;
+}
+.brick-item-s .figure-img {
+    position: absolute;
+    right: 20px;
+    top: 32px;
+    width: 80px;
+    height: 80px;
+}
+.brick-item-s .figure-img a {
+    display: block;
+}
+.brick-item-s .figure-img img {
+    width: 80px;
+    height: 80px;
+}
+.brick-item-s .title,
+.brick-item-s .title a {
+    color: #333;
+}
+.brick-item-s .title {
+    margin: -10px 110px 5px 30px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.brick-item-s .title a {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+}
+.brick-item-s .price {
+    margin: 0 110px 0 30px;
+    font-size: 12px;
+    color: #ff6700;
+}
+.brick-item-s .price .num {
+    font-size: 14px;
+}   
+.brick-item-s .figure-more {
+    position: absolute;
+    right: 35px;
+    top: 48px;
+    width: 48px;
+    height: 48px;
+}
+.brick-item-s .figure-more a {
+    display: block;
+    color: #ff6700;
+}
+.brick-item-s i {
+    font-size: 48px;
+    line-height: 48px;
+}
+.brick-item-s .more {
+    display: block;
+    margin: 0 110px 0 30px;
+    font-size: 18px;
+    color: #333;
+}
+.brick-item-s .more small {
+    display: block;
+    font-size: 12px;
+    color: #757575;
+}
+
+/* *********家电栏********** */
+.xm-plain-box .box-hd .more .tab-list {
+    margin: 0;
+    padding: 16px 0 0;
+    list-style-type: none;
+    font-size: 16px;
+}
+.xm-plain-box .box-hd .more .tab-list li:hover,
+.xm-plain-box .box-hd .more .tab-list li.tab-active{
+    color: #ff6700;
+    border-bottom: 2px solid #ff6700;
+}
+.home-brick-box .box-hd .more .tab-list li {
+    margin: 0 0 0 30px;
+}
+.xm-plain-box .box-hd .more .tab-list li {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    padding: 0;
+    margin: 0 15px;
+    color: #424242;
+    border-bottom: 2px solid #f5f5f5;
+    border-bottom: 2px solid transparent;
+    -webkit-transition: border-color .5s;
+    transition: border-color .5s;
+    cursor: pointer;
+}
+.brick-promo-list .brick-item-m {
+    height: 300px;
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
 
 
