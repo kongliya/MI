@@ -516,3 +516,261 @@
     width: 316px;
     height: 170px;
 }
+
+/* *********小米闪购********** */
+.xm-plain-box .box-hd{
+    position: relative;
+    height: 58px;
+    -webkit-font-smoothing: antialiased;
+}
+.xm-plain-box .box-hd .title{
+    margin: 0;
+    font-size: 22px;
+    font-weight: 200;
+    line-height: 58px;
+    color: #333;
+}
+.home-star-goods .box-bd,
+.xm-flashPurchase .box-bd {
+    position: relative;
+    width: 1226px;
+    overflow: hidden;
+    _zoom: 1;
+    padding-bottom: 40px;
+}
+.xm-flashPurchase-list{
+    width: 2728px;
+}
+.home-star-goods .box-hd .more,
+.xm-flashPurchase .box-hd .more{
+    top: 24px;
+}
+.box-hd .more{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.xm-plain-box .box-hd .more .control{
+    margin-left: -1px;
+}
+.xm-controls .control-disabled{
+    cursor: default;
+}
+.xm-controls-line-small .control{
+    width: 24px;
+    height: 16px;
+    padding: 3px 5px;
+    border: 1px solid #e0e0e0;
+    font-size: 16px;
+    line-height: 16px;
+}
+.xm-carousel-list li {
+    float: left;
+    width: 234px;
+    height: 300px;
+    margin-right: 14px;
+}
+.xm-flashPurchase .xm-flashPurchase-list li {
+    list-style: none;
+    position: relative;
+    background: #fff;
+}
+.home-star-goods .goods-list li,
+.xm-flashPurchase .goods-list li {
+    height: 300px;
+    padding-top: 39px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    text-align: center;
+    background: #fafafa;
+    -webkit-transition: all .6s;
+    transition: all .6s;
+}
+.home-star-goods .box-bd,
+.xm-flashPurchase .box-bd{
+    position: relative;
+    width: 1226px;
+    overflow: hidden;
+    _zoom: 1;
+    padding-bottom: 40px;
+}
+.home-star-goods .xm-carousel-list,
+.xm-flashPurchase .xm-carousel-list{
+    width: 1240px;
+    height: 340px;
+}
+.xm-carousel-list{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.xm-flashPurchase .xm-flashPurchase-countdown{
+    float: left;
+    _display: inline;
+    width: 234px;
+    margin: 0 14px 0 0;
+    padding: 0;
+}
+.xm-flashPurchase .xm-flashPurchase-list li {
+    list-style: none;
+    position: relative;
+    background: #fff;
+}
+.home-star-goods .rainbow-list .rainbow-item-4,
+.xm-flashPurchase .rainbow-list .rainbow-item-4{
+    border-top-color: #e53935;
+}
+.xm-flashPurchase .xm-plain-box .xm-flashPurchase-countdown li {
+    background: #f1eded;
+    text-align: center;
+}
+.xm-flashPurchase .xm-flashPurchase-countdown li .time-title {
+    font-size: 21px;
+    color: #ef3a3b;
+    padding-top: 15px;
+}
+.xm-flashPurchase .xm-flashPurchase-countdown li img {
+    margin: 25px auto;
+}
+.xm-flashPurchase .xm-flashPurchase-countdown li .sub {
+    color: rgba(0,0,0,0.54);
+    font-size: 15px;
+}
+.xm-flashPurchase .xm-flashPurchase-countdown li .countdown {
+    width: 168px;
+    margin: 28px auto 0;
+}
+.xm-flashPurchase .xm-flashPurchase-countdown li .countdown .box {
+    width: 46px;
+    height: 46px;
+    background: #605751;
+    color: #fff;
+    font-size: 24px;
+    line-height: 46px;
+    float: left;
+}
+.xm-flashPurchase .xm-flashPurchase-countdown li .countdown .dosh {
+    width: 15px;
+    float: left;
+    height: 46px;
+    line-height: 46px;
+    color: #605751;
+    font-size: 28px;
+}
+.home-star-goods .rainbow-list .rainbow-item-1,
+.xm-flashPurchase .rainbow-list .rainbow-item-1 {
+    border-top-color: #ffac13;
+}
+.home-star-goods .goods-list li,
+.xm-flashPurchase .goods-list li {
+    height: 300px;
+    padding-top: 39px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    text-align: center;
+    background: #fafafa;
+    -webkit-transition: all .6s;
+    transition: all .6s;
+}
+.xm-flashPurchase .xm-flashPurchase-list li .bg {
+    background: rgba(0,0,0,0.02);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+}
+.home-star-goods .goods-list .thumb,
+.xm-flashPurchase .goods-list .thumb {
+    display: block;
+    width: 160px;
+    margin: 0 auto 22px;
+}
+.home-star-goods .goods-list .thumb img,
+.xm-flashPurchase .goods-list .thumb img {
+    width: 160px;
+    height: 160px;
+}
+.home-star-goods .goods-list .title,
+.home-star-goods .goods-list .title a,
+.xm-flashPurchase .goods-list .title,
+.xm-flashPurchase .goods-list .title a {
+    color: #212121;
+}
+.home-star-goods .goods-list .title,
+.xm-flashPurchase .goods-list .title {
+    margin: 0 20px 3px;
+    font-size: 14px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+}
+.home-star-goods .goods-list .desc,
+.xm-flashPurchase .goods-list .desc {
+    height: 18px;
+    margin: 0 20px 12px;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+    color: #b0b0b0;
+}
+.home-star-goods .goods-list .price,
+.xm-flashPurchase .goods-list .price {
+    margin: 0;
+    color: #ff6709;
+}
+.xm-flashPurchase .xm-flashPurchase-list li del {
+    color: #b0b0b0;
+}
+.xm-flashPurchase .xm-flashPurchase-list li .flag {
+    background-color: #e53935;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: 2;
+    width: 64px;
+    height: 20px;
+    margin-left: -32px;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    color: #fff;
+}
+.home-star-goods .rainbow-list .rainbow-item-2,
+.xm-flashPurchase .rainbow-list .rainbow-item-2 {
+    border-top-color: #83c44e;
+}
+.home-star-goods .rainbow-list .rainbow-item-3,
+.xm-flashPurchase .rainbow-list .rainbow-item-3 {
+    border-top-color: #2196f3;
+}
+.home-star-goods .rainbow-list .rainbow-item-4,
+.xm-flashPurchase .rainbow-list .rainbow-item-4 {
+    border-top-color: #e53935;
+}
+.home-star-goods .rainbow-list .rainbow-item-5,
+.xm-flashPurchase .rainbow-list .rainbow-item-5 {
+    border-top-color: #00c0a5;
+}
+.home-star-goods .rainbow-list .rainbow-item-6,
+.xm-flashPurchase .rainbow-list .rainbow-item-6 {
+    border-top-color: #ffac13;
+}
+.home-star-goods .rainbow-list .rainbow-item-7,
+.xm-flashPurchase .rainbow-list .rainbow-item-7 {
+    border-top-color: #83c44e;
+}
+.home-star-goods .rainbow-list .rainbow-item-8, .xm-flashPurchase .rainbow-list .rainbow-item-8 {
+    border-top-color: #2196f3;
+}
+.home-star-goods .rainbow-list .rainbow-item-9, .xm-flashPurchase .rainbow-list .rainbow-item-9 {
+    border-top-color: #e53935;
+}
+.home-star-goods .rainbow-list .rainbow-item-10, .xm-flashPurchase .rainbow-list .rainbow-item-10 {
+    border-top-color: #00c0a5;
+}
