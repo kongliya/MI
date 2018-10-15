@@ -1067,14 +1067,82 @@
     padding: 0;
 }
 
-
-
-
-
-
-
-
-
+/* *********为你推荐********** */
+.home-recm-box {
+    margin-bottom: 22px;
+}
+.home-recm-box .xm-carousel-wrapper {
+    position: relative;
+    width: 1226px;
+}
+.xm-recommend ul.xm-carousel-list li {
+    margin-right: 14px;
+}
+.home-recm-box .xm-recommend ul.xm-carousel-list li {
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.xm-recommend ul li {
+    margin-bottom: 14px;
+    height: 300px;
+    background-color: #fff;
+    text-align: center;
+    position: relative;
+}
+.xm-recommend dl {
+    padding: 0 20px;
+    margin-bottom: 0;
+}
+.xm-recommend ul, .xm-recommend li,
+.xm-recommend dl, .xm-recommend dt,
+.xm-recommend dd {
+    padding: 0;
+    margin-top: 0;
+    list-style: none;
+}
+.xm-recommend dl dt {
+    padding: 40px 0 15px;
+    height: 145px;
+}
+.xm-recommend dl dt img {
+    width: 140px;
+    height: 140px;
+}
+.xm-recommend .xm-recommend-name {
+    margin-bottom: 10px;
+    height: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+}
+.xm-recommend .xm-recommend-name a {
+    color: #333;
+}
+.xm-recommend .xm-recommend-price {
+    margin-bottom: 10px;
+    color: #ff6700;
+}
+.xm-recommend dl dd {
+    margin-left: 0;
+}
+.xm-recommend .xm-recommend-tips {
+    position: relative;
+    color: #757575;
+}
+.xm-recommend .xm-recommend-notice {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+    opacity: 0;
+    filter: alpha(opacity=0)\9;
+    -webkit-transform: translate3d(0, -10px, 0);
+    transform: translate3d(0, -10px, 0);
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
 
 
 
