@@ -68,7 +68,7 @@ gulp.task("sass",()=>{
 	// sass 只要出错 connect就会终止;
 	// 我们想要的只是报错 但是不退出连接;
 	.pipe(sass().on("error",sass.logError))
-	.pipe(gulp.dest("dist.css"))
+	.pipe(gulp.dest("dist/css"))
 })
 
 // 编译 ? es6 => es5;

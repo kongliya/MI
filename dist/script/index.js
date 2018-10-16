@@ -51,7 +51,6 @@ $.extend(Banner.prototype,{
         this.oRight = $(".banner-next");
         this.aPageBtn = $(".page-item");
         this.oWrap = $(".banner");
-        console.log(this.oWrap)
         this.nowIndex = 0;
         this.list_num = this.aListItem.length;
         this.bindEvent();
@@ -114,19 +113,96 @@ banner.init();
 banner.autoPlay();
 
 // *********图片特效********
-$.each($(".brick-item"),function(index,item){
-    
+$(".brick-item-m").on({
+    "mouseenter":function(){
+        $(this).addClass("brick-item-active");
+    },
+    "mouseleave":function(){
+        $(this).removeClass("brick-item-active");
+    }
+})
+
+// *********小米闪购切换********
+var wfbanner2 = new WFBanner();
+wfbanner2.init({
+    item_list : ".xm-list",
+    left_btn : "#left2",
+    right_btn : "#right2",
+    wrap : ".flash-banner",
+    ul : ".xm-list"
+})
+
+// *********家电选项卡********
+$.each($(".tab1 li"),function(index,item){
     $(item).on("mousemove",index,function(event){
-        event.data.toggleClass = "brick-item-active"
+        $(".brick-choose").eq(index).show()
+        .siblings(".brick-choose").hide();
+
+        $(".tab-list li").eq(index)
+        .addClass("tab-active")
+        .siblings("li").removeClass("tab-active");
     })
 })
-// $(".brick-item").on({
-//     "mousemove":function(){
-//         $(".brick-item").addClass("brick-item-active");
-//     },
-//     "mouseout":function(){
-//         $(".brick-item").removeClass("brick-item-active");
-//     }
-// })
 
-// *********小米闪购无缝轮播图********
+// *********智能********
+$.each($(".tab2 li"),function(index,item){
+    $(item).on("mousemove",index,function(event){
+        $(".brick-choose2").eq(index).show()
+        .siblings(".brick-choose2").hide();
+
+        $(".tab2 li").eq(index)
+        .addClass("tab-active")
+        .siblings("li").removeClass("tab-active");
+    })
+})
+
+// *********搭配********
+$.each($(".tab3 li"),function(index,item){
+    $(item).on("mousemove",index,function(event){
+        $(".brick-choose3").eq(index).show()
+        .siblings(".brick-choose3").hide();
+
+        $(".tab3 li").eq(index)
+        .addClass("tab-active")
+        .siblings("li").removeClass("tab-active");
+    })
+})
+
+// *********万有影力********
+$.each($(".tab4 li"),function(index,item){
+    $(item).on("mousemove",index,function(event){
+        $(".brick-choose4").eq(index).show()
+        .siblings(".brick-choose4").hide();
+
+        $(".tab4 li").eq(index)
+        .addClass("tab-active")
+        .siblings("li").removeClass("tab-active");
+    })
+})
+
+// *********周边********
+$.each($(".tab5 li"),function(index,item){
+    $(item).on("mousemove",index,function(event){
+        $(".brick-choose5").eq(index).show()
+        .siblings(".brick-choose5").hide();
+
+        $(".tab5 li").eq(index)
+        .addClass("tab-active")
+        .siblings("li").removeClass("tab-active");
+    })
+})
+
+// *********为你推荐********
+var wfbanner1 = new WFBanner();
+wfbanner1.init({
+    item_list : ".xm-carousel-col-5-list",
+    left_btn : "#left",
+    right_btn : "#right",
+    wrap : ".xm-carousel-wrapper",
+    ul : ".xm-carousel-list"
+})
+
+
+
+
+
