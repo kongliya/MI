@@ -35,10 +35,9 @@ a{
     outline: none; 
     color: #757575;
 }
-a:hover{
-    text-decoration:none; 
-    outline: none; 
-    /* color: #d36f16; */
+a:hover {
+    color: #ff6700;
+    text-decoration: none;
 }
 .clearfix:after{
     clear:both; 
