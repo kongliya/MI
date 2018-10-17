@@ -1,0 +1,106 @@
+@import "_reset.scss";
+.container{
+    height: 40px;
+    padding: 20px;
+    background: #ddd;
+    .cart-list{
+        height: 60px;
+        width: 100%;
+        .empty{
+            width: 40px;
+            height: 40px;
+            background-image: url(../images/car1.png);
+            background-size: 40px 40px;
+            position: relative;
+            &.full{
+                background-image: url(../images/car2.png);
+            }
+            span{
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                position: absolute;
+                top: -15px;
+                right: -15px;
+                background: rgb(255, 0, 0);
+                border-radius: 50%;;
+            }
+            
+        }
+    }
+    .cart-lists{
+        width: 250px;
+        background: #ccc;
+        position: absolute;
+        top: 40px;
+        border-radius: 5px;
+        overflow: hidden;
+        .carts{
+           position: relative;
+           border: 1px solid #ddd;
+        }
+        .small-img{
+            width: 80px;
+            height: 80px;
+            float: left;
+        }
+        .cart-txt{
+            display: inline-block;
+            .txt{
+                height: 38px;
+                line-height: 24px;
+                width: 100px;
+                .title{
+                    float: left;
+                    width: 150px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .cart-price{
+                    float: left;
+                    font-size: 12px;
+                    color: #ff6700;
+                }
+            }
+            
+        }
+    }
+    ul{
+        width: 1200px;
+        margin: 0 auto;
+    }
+    ul .con{
+        float: left;
+        width: 220px;
+        margin: 10px;
+        box-shadow: 0 0 5px #ddd;
+        overflow: hidden;
+        .large-img{
+            height: 220px;
+            width: 220px;
+            display: block;
+        }
+        .title{
+            margin: 10px;
+            width: 190px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .goods-price{
+            font-size: 14px;
+            color: #ff6700;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        button{
+            width: 220px;
+            border-radius: 5px;
+            background: #f99;
+            outline: none;
+        }
+    }
+    
+}
