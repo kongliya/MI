@@ -4,9 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>注册小米账号</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/register.css">
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div class="wrap">
+            <div class="layout">
+                <div class="con">
+                    <div class="header">
+                        <div class="external_logo_area"><a class="milogo" href="javascript:void(0)"></a></div>
+                        <div class="title-item t_c">
+                            <h4 class="title_big30">注册小米帐号</h4>          
+                        </div>
+                    </div>
+                    <div class="regbox">
+                        <p class="country">国家 / 地区</p>
+                        <p>
+                            <select name="" id="">
+                                <option value="">中国</option>
+                            </select>
+                            <p class="phone">成功注册帐号后，国家/地区将不能被修改</p>
+                        </p>
+                        <p class="country">手机号码</p>
+                        <p>
+                            <div class="listwrap" id="select-cycode" _region="CN" _def_method="PH">
+                                <div class="listtit" id="reg-phone-select-cty">
+                                    <div class="tits display_box c_b">
+                                        <p id="select-cycode-result">+86</p>
+                                        <i class="icon_arrow"></i>
+                                    </div>
+                                    <div class="inputbg">
+                                        <input type="hidden" class="select-regions-input" name="region" value="CN">
+                                        <label class="labelbox err_label" for="">
+                                            <input type="tel" name="phone" data-type="PH" placeholder="请输入手机号码">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </p>
+                    <div class="reg-btn">
+                            <input class="btn332 btn_reg_1 submit-step" data-to="phone-step2" type="submit" value="立即注册">
+                    </div>
+                    
+                </div>
+                <div class="privacy_box">
+                    <div class="msg">
+                        <label class="n_checked now select-privacy">
+                        注册帐号即表示您同意并愿意遵守小米 <a href="https://static.account.xiaomi.com/html/agreement/account/cn.html" class="inspect_link agreement_link" title="用户协议" target="_blank">用户协议</a>和<a href="http://www.mi.com/about/new-privacy/" class="inspect_link privacy_link" title=" 隐私政策 " target="_blank"> 隐私政策 </a>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+
+            <!-- 脚部 -->
+            <div class="n-footer">
+                <div class="nf-link-area clearfix">
+                    <ul class="lang-select-list">
+                    <li><a href="javascript:void(0);" class="lang-select-li current">简体</a>|</li>
+                    <li><a href="javascript:void(0);" class="lang-select-li">繁体</a>|</li>
+                    <li><a href="javascript:void(0);" class="lang-select-li">English</a>|</li>
+                    <li><a href="javascript:void(0);" target="_blank">常见问题</a>|</li>
+                    <li><a href="javascript:void(0);" target="_blank">隐私政策</a></li>
+                    </ul>
+                </div>
+                <p class="nf-intro">小米公司版权所有-京ICP备10046444-<a class="beian-record-link" target="_blank" href="javascript:void(0);"><span>
+                    <img src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png"></span>京公网安备11010802020134号</a>-京ICP证110507号
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

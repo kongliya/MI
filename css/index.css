@@ -1248,8 +1248,7 @@
 
 /* *********热评产品********** */
 .home-review-box {
-    /* margin-bottom: 22px; */
-    padding-bottom: 60px;
+    margin-bottom: 22px;
 }
 .review-list {
     width: 1240px;
@@ -1333,6 +1332,301 @@
     margin: 0;
     color: #ff6700;
 }
+
+/* *********内容********** */
+.home-content-box {
+    margin-bottom: 22px;
+}
+.content-item {
+    position: relative;
+    float: left;
+    width: 296px;
+    height: 374px;
+    padding: 45px 0 0;
+    border-top: 1px solid #e0e0e0;
+    margin-left: 14px;
+    margin-bottom: 14px;
+    background: #fff;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.content-item .title {
+    margin: 0 10px 18px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+.content-list .content-item-first{
+    margin-left: 0;
+}
+.content-item-book {
+    border-top-color: #ffac13;
+    color: #ffac13;
+}
+.www{
+    position: relative;
+    width: 296px;
+}
+.content-item .item-list {
+    height: 340px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    overflow: hidden;
+    color: #333;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.content-item .item-list li {
+    float: left;
+    width: 296px;
+    height: 340px;
+}
+.content-item-theme {
+    border-top-color: #83c44e;
+    color: #83c44e;
+}
+.content-item-game {
+    border-top-color: #e53935;
+    color: #e53935;
+}
+.content-item-app {
+    border-top-color: #2196f3;
+    color: #2196f3;
+}
+.content-item .name,
+.content-item .name a {
+    color: #333;
+}
+.content-item .name {
+    margin: 0 20px 5px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.25;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+}
+.content-item .name a {
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    _zoom: 1;
+    outline: none;
+}
+.content-item .desc,
+.content-item .desc a {
+    color: #b0b0b0;
+}
+.content-item .desc {
+    margin: 0 48px 10px;
+    height: 40px;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    overflow: hidden;
+    _zoom: 1;
+    color: #b0b0b0;
+}
+.content-item .price,
+.content-item .price a {
+    color: #333;
+}
+.content-item .price {
+    height: 21px;
+    margin: 0 10px 15px;
+    text-align: center;
+    color: #333;
+}
+.content-item .figure-img {
+    width: 216px;
+    height: 154px;
+    margin: 0 auto;
+}
+.content-item .figure-img a {
+    display: block;
+    height: 154px;
+}   
+.content-item .figure-img img {
+    width: 216px;
+    height: 154px;
+}
+.content-item .xm-pagers-wrapper {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    width: 296px;
+}
+.xm-pagers-wrapper {
+    text-align: center;
+}
+.xm-pagers {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.xm-pagers .pager-active {
+    cursor: default;
+}
+.xm-pagers .pager {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: 10px;
+    height: 10px;
+    padding: 10px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+.xm-pagers .pager-active .dot,
+.xm-pagers .pager-active:hover .dot {
+    border-color: #ff6700;
+    background-color: #f5f5f5;
+    background-color: transparent;
+}
+.home-content-box .dot {
+    border-color: #fff;
+}
+.xm-pagers .dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border: 2px solid #f5f5f5;
+    border-radius: 6px;
+    text-align: left;
+    text-indent: -9999em;
+    overflow: hidden;
+    _zoom: 1;
+    background-color: #b0b0b0;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+.content-item .xm-controls .control-prev {
+    left: 0;
+}
+.content-item .xm-controls .control {
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    -webkit-transition: all .6s;
+    transition: all .6s;
+}
+.content-item .xm-controls .control-next {
+    right: 0;
+}
+.xm-controls-block-small .control {
+    width: 20px;
+    height: 24px;
+    padding: 12px 0;
+    font-size: 18px;
+    line-height: 24px;
+}
+.xm-controls-block-small .control:hover,
+.xm-controls-block-middle .control:hover {
+    color: #fff;
+    background-color: rgba(66,66,66,0.2);
+}
+.content-item:hover {
+    z-index: 2;
+    -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+}
+
+/* *********视频********** */
+.home-video-box {
+    padding-bottom: 60px;
+}
+.video-item {
+    position: relative;
+    float: left;
+    width: 296px;
+    height: 285px;
+    margin-left: 14px;
+    margin-bottom: 14px;
+    text-align: center;
+    background: #fff;
+    -webkit-transition: all .2s linear;
+    transition: all .2s linear;
+}
+.video-list {
+    width: 1240px;
+    height: 285px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.video-item:first-child,
+.video-item-first {
+    margin-left: 0;
+}
+.video-item .figure-img {
+    position: relative;
+    width: 296px;
+    height: 180px;
+    margin: 0 0 28px;
+}
+.video-item .figure-img a {
+    display: block;
+    height: 180px;
+}
+.video-item .figure-img img {
+    width: 296px;
+    height: 180px;
+}
+.video-item .play {
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    width: 32px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 12px;
+    background-color: #424242;
+    background-color: rgba(0,0,0,0.6);
+    color: #fff;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    overflow: hidden;
+    _zoom: 1;
+}
+.video-item .play i {
+    font-size: 16px;
+    line-height: 20px;
+}
+.video-item .title {
+    margin: 0 0 6px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: #333;
+}
+.video-item .desc {
+    height: 18px;
+    margin: 0;
+    font-size: 12px;
+    color: #b0b0b0;
+}
+.video-item .title a {
+    color: #333;
+}
+.video-item:hover {
+    z-index: 2;
+    -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+}
+.video-item .figure-img:hover .play {
+    background-color: #ff6700;
+    border-color: #ff6700;
+}
+
 
 /* *********脚部********** */
 .site-footer .footer-service {
@@ -1514,3 +1808,5 @@
     margin-top: 14px;
     border-top: 1px solid #f5f5f5;
 }
+
+

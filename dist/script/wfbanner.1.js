@@ -1,10 +1,15 @@
 function WFBanner(){}
 $.extend(WFBanner.prototype,{
     init : function(options){
+        // 所有的图片;
         this.item_list = $(options.item_list);
+        // 左按钮;
         this.left_btn = $(options.left_btn);
+        // 右按钮;
         this.right_btn = $(options.right_btn);
+        
         this.wrap = $(options.wrap);
+        // 核心下标;
         this.nowIndex = 0;
 
         this.item_num = this.item_list.length - 1;

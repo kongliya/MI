@@ -122,6 +122,41 @@ $(".brick-item-m").on({
     }
 })
 
+// ************闪购倒计时************;
+var endTime = new Date("2018/10/31");
+var endMs = endTime.getTime();
+
+var timer = null;
+timer = setInterval(function(){
+    var nowDateMs = new Date().getTime();
+    var reduceMs = parseInt(endMs - nowDateMs) / 1000;
+
+    var hour = parseInt(reduceMs / 3600);
+    var day = parseInt(hour / 24);
+    var minute = parseInt((reduceMs - hour * 3600) / 60);
+    var second =  parseInt(reduceMs - hour * 3600 - minute * 60);
+    if(hour < 10){
+        hour = "0" + hour;
+    }
+    if(day < 10){
+        day = "0" + day;
+    }
+    if(minute < 10){
+        minute = "0" + minute;
+    }
+    if(second < 10){
+        second = "0" + second;
+    }
+    // oHour.html(hour);
+    // console.log(day,minute,second)
+    $(".box1").html(day);
+    $(".box2").html(minute);
+    $(".box3").html(second);
+    if(day == 00){
+        $(".box1").html(hour);
+    }
+},1000)
+
 // *********小米闪购切换********
 var wfbanner2 = new WFBanner();
 wfbanner2.init({
@@ -202,8 +237,59 @@ wfbanner1.init({
     ul : ".xm-carousel-list"
 })
 
+// *************内容************
+// 继承wfbanner.js
+function ExtendWFBanner2(){}
+for(var attr in WFBanner2.prototype){
+    ExtendWFBanner2.prototype[attr] = WFBanner2.prototype[attr];
+}
+$.extend(ExtendWFBanner2.prototype,{
+    animate(){
+        console.log(this.nowIndex)
+        console.log(this.ul)
+        this.ul.stop().animate({
+            left: - this.item_width * this.nowIndex
+        })
+        var index = this.nowIndex == this.item_num ? 0 : this.nowIndex;
+        this.btn_list.eq(index).addClass("pager-active")
+        .siblings("li").removeClass("pager-active");
+    }
+})
 
-// *********回到顶部********
+var extendWFBanner1 = new ExtendWFBanner2();
+extendWFBanner1.init({
+    item_list : ".xuanLi1",
+    left_btn : ".xuan-left1",
+    right_btn : ".xuan-right1",
+    btn_list : ".pager1",
+    ul : ".xm-wrap1"
+})
+var extendWFBanner2 = new ExtendWFBanner2();
+extendWFBanner2.init({
+    item_list : ".xuanLi2",
+    left_btn : ".xuan-left2",
+    right_btn : ".xuan-right2",
+    btn_list : ".pager2",
+    ul : ".xm-wrap2"
+})
+var extendWFBanner3 = new ExtendWFBanner2();
+extendWFBanner3.init({
+    item_list : ".xuanLi3",
+    left_btn : ".xuan-left3",
+    right_btn : ".xuan-right3",
+    btn_list : ".pager3",
+    ul : ".xm-wrap3"
+})
+var extendWFBanner4 = new ExtendWFBanner2();
+extendWFBanner4.init({
+    item_list : ".xuanLi4",
+    left_btn : ".xuan-left4",
+    right_btn : ".xuan-right4",
+    btn_list : ".pager4",
+    ul : ".xm-wrap4"
+})
+
+// ***********回到顶部**********
 $(".bar-totop").on("click",function(){
     $("html,body").scrollTop(0);
 })
