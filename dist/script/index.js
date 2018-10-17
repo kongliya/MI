@@ -1,7 +1,3 @@
-// *********搜索的iconfont********
-
-
-
 // *********顶部导航栏二级菜单的显示********
 $.each($(".nav-link"),function(index,item){
     $(item).on("mouseenter",index,function(){

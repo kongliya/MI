@@ -31,7 +31,13 @@
     color: #b0b0b0;
 }
 .site-topbar a:hover{
-    color: #fff;
+    color: #fff;;
+}
+.topbar-cart:hover{
+    background: #fff;
+}
+.topbar-cart:hover a{
+    color: #ff6700;
 }
 .site-topbar .sep{
     margin: 0 .5em;
@@ -44,6 +50,8 @@
     float: right;
 }
 .topbar-cart{
+    text-align: center;
+    background: #424242;
     width: 120px;
     margin-left: 15px;
     position: relative;
@@ -64,13 +72,14 @@
 /* 购物车 */
 .site-topbar .cart-menu {
     display: none;
+    text-align: left;
     position: absolute;
     right: 0;
-    right: -1px \9;
     top: 40px;
     z-index: 31;
-    width: 316px;
-    padding: 15px 0 0;
+    width: 345px;
+    padding: 15px 22px 0;
+    box-sizing: border-box;
     color: #424242;
     background: #fff;
     border: 1px solid #e0e0e0 \9;
@@ -996,7 +1005,7 @@
     text-align: center;
 }
 .brick-item-m .desc {
-    margin: 0 10px 10px;
+    margin: 10px;
     height: 18px;
     font-size: 12px;
     text-align: center;
@@ -1118,6 +1127,7 @@
     display: block;
     font-size: 12px;
     color: #757575;
+    margin-top: 7px;
 }
 
 /* *********家电栏********** */
@@ -1540,7 +1550,7 @@
 
 /* *********视频********** */
 .home-video-box {
-    padding-bottom: 60px;
+    padding-bottom: 20px;
 }
 .video-item {
     position: relative;
@@ -1626,7 +1636,6 @@
     background-color: #ff6700;
     border-color: #ff6700;
 }
-
 
 /* *********脚部********** */
 .site-footer .footer-service {

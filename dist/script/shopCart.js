@@ -1,3 +1,6 @@
+
+
+// *********购物车及商品列表;************
 function ShopCar(){}
 $.extend(ShopCar.prototype,{
     init(){
@@ -13,40 +16,39 @@ $.extend(ShopCar.prototype,{
     },
     loadJson(){
         var opt = {
-            url : "data.json",
+            url : "data/data.json",
             type : "GET",
             context : this
         }
         return $.ajax(opt);
     },
     renderPage(){
-        console.log(this.json);
+        // console.log(this.json);
         var html = "";
         for(var i = 0; i < this.json.length; i ++){
             html += `<li class="con">
                         <img class="large-img" src="${this.json[i].img}" alt="">
-                        <p class="title">${this.json[i].goods_name}</p>
+                        <p class="list-title">${this.json[i].goods_name}</p>
                         <p class="goods-price">${this.json[i].goods_price} 元</p>
-                        <button data-id="${this.json[i].goods_id}">添加到购物车</button>
+                        <button class="addCart" data-id="${this.json[i].goods_id}">添加到购物车</button>
                     </li>`;
                     // console.log(this.main)
         }
         this.main.html(html);
     },
     bindEvent(){
-        $(".lists").on("click","button",this.addCar.bind(this));
-        $(".cart-list").on("mouseenter",this.showList.bind(this));
-        $(".cart-list").on("mouseleave",function(){
-            $(".cart-lists").children().remove();
+        $(".lists").on("click",".addCart",this.addCar.bind(this));
+        $(".topbar-cart").on("mouseenter",this.showList.bind(this));
+        $(".topbar-cart").on("mouseleave",function(){
+            $(".topbar-cart").find(".cart-menu").hide();
         });
-        $(".empty").on("click",function(event){
-            console.log(1);
+        $(".topbar-cart").on("click",function(event){
             var target = event.target;
-            if(target != $(".empty")[0]) return 0;
+            if(target != $(".topbar-cart")[0]) return 0;
             $.removeCookie("shopCar");
 
             // 执行鼠标移出事件;
-            $(".cart-list").triggerHandler("mouseleave");
+            $(".topbar-cart").triggerHandler("mouseleave");
             this.listSum();
         }.bind(this));
     },
@@ -54,7 +56,6 @@ $.extend(ShopCar.prototype,{
         // 怎么知道将谁加入的购物车 => 通过 goods-id;
         var target = event.target;
         var goodsId = $(target).attr("data-id");
-
         var cookie;
         if(cookie = $.cookie("shopCar")){
             // 将字符串转换为数组 方便插入操作;
@@ -94,8 +95,9 @@ $.extend(ShopCar.prototype,{
     },
     showList(event){
         // 判定是否存在购物车，如果不存在购物车就没必要拼接列表了;
+        $(".cart-menu").show();
         var target = event.target;
-        if(target != $(".cart-list")[0]) return 0;
+        if(target != $(".topbar-cart")[0]) return 0;
         var cookie;
         if(!(cookie = $.cookie("shopCar"))) return 0;
         var cookieArray = JSON.parse(cookie);
@@ -107,10 +109,11 @@ $.extend(ShopCar.prototype,{
             for(var j = 0 ; j < this.json.length; j ++){
                 if(cookieArray[i].id == this.json[j].goods_id){
                     html +=`<li data-id=${cookieArray[i].id} class="carts">
-                                <img style="width:80px; height:80px" src="${this.json[i].img}" alt="">
+                                <img style="width:80px; height:80px;float:left;" src="${this.json[i].img}" alt="">
                                 <div class="cart-txt">
                                     <p class="txt">
                                         <i class="title">${this.json[i].goods_name}</i>
+                                        <em class="goodNo"> X ${cookieArray[i].num}</em>
                                         <i class="cart-price">${this.json[i].goods_price} 元</i>
                                     </p>
                                 </div>
@@ -125,7 +128,7 @@ $.extend(ShopCar.prototype,{
     listSum(){
         var cookie;
         if(!(cookie = $.cookie("shopCar"))){
-            $(".container").find("span").html(0);
+            $(".topbar-cart").find(".cart-num").html(0);
             return 0;
         };
         var cookieArray = JSON.parse(cookie);
@@ -133,8 +136,100 @@ $.extend(ShopCar.prototype,{
         for(var i = 0 ; i < cookieArray.length; i ++){
             sum += Number(cookieArray[i].num);
         }
-        $(".container").find("span").html(sum);
+        $(".topbar-cart").find(".cart-num").html(`(`+sum+`)`);
     }
 })
 var shopCar = new ShopCar();
 shopCar.init();
+
+// ***********瀑布流;************
+function WaterFall(){}
+WaterFall.prototype.init = function(){
+    // 进度条;
+    this.ul = document.querySelector(".waterfall .lists2");
+    // 加载第几页;
+    this.page = 0;
+    // 是否加载完了;
+    this.loaded = false;
+    
+
+    // 绑定事件;
+    // 渲染页面;
+    this.handleEvent();
+    this.loadMsg()
+    .then((res)=>{
+        // console.log(res);
+        //json.parse 用于从一个字符串中解析出json 对象
+        res = typeof res == "string" ? JSON.parse(res) : res;
+        this.renderPag(res);
+
+    })
+}   
+WaterFall.prototype.handleEvent = function(){
+    // 滚动事件判定是否应该加载数据;
+    onscroll = this.iflLoad.bind(this);
+}
+WaterFall.prototype.loadMsg = function(){
+    // 请求的加载;
+    return new Promise((succ)=>{
+        // this => 实例化对象;
+        var xhr = new XMLHttpRequest();
+        var path = "http://localhost:88/proxy/api.douban.com/v2/movie/top250?start="+this.page * 20 + "&count=20";
+        xhr.open("GET",path);
+        xhr.send(null);
+        xhr.onload = function(){
+            succ(xhr.response);
+        }
+        this.page++;
+        // console.log(this.page);
+    })
+}
+WaterFall.prototype.renderPag = function(json){
+    var list = json.subjects;
+    var html = "";
+    for(var i = 0 ; i < list.length ; i ++){
+        html += `
+                <li class="con">
+                    <img class="large-img" src="${list[i].images.small}" alt="">
+                    <p class="list-title">${list[i].title}</p>
+                    <p class="goods-price">${list[i].rating.average} 元</p>
+                </li>
+                `
+    }
+    // 把渲染好的字符串放入页面之中;
+    this.ul.innerHTML += html;
+
+    // 渲染结束;
+    this.loaded = true;
+}
+WaterFall.prototype.iflLoad = function(){
+    if(this.loaded == false){
+        return 0;
+    }
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+    // 显示的高度有多高;
+    var showHeight = document.documentElement.clientHeight + scrollTop;
+    // 最后一个元素;
+    var aLi = document.querySelectorAll(".lists2 li");
+    var lastLi = aLi[aLi.length - 1];
+    if(lastLi.offsetTop <= showHeight + 300){
+        // 加载数据
+        this.loadMsg()
+        .then((res)=>{
+            res = typeof res == "string" ? JSON.parse(res) : res;
+            this.renderPag(res);
+        })
+        this.loaded = false;
+    }
+}
+function getName(arr){
+    var res = "";
+    for(var i = 0 ; i < arr.length ; i ++){
+        res += "  " + arr[i].name;
+    }
+    return res;
+}
+
+var waterfall = new WaterFall();
+waterfall.init();
+

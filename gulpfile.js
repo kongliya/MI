@@ -45,6 +45,7 @@ gulp.task("watch",()=>{
 	gulp.watch("index.html",["html","sass"]);
 	gulp.watch("css/*.css",["html","css"]);
 	gulp.watch("js/*.js",["html","script"]);
+	gulp.watch("sass/*.scss",["html","sass"]);
 })
 
 gulp.task("default",["watch","connect"]);
