@@ -203,6 +203,17 @@ wfbanner1.init({
 })
 
 
-
-
-
+// *********回到顶部********
+$(".bar-totop").on("click",function(){
+    $("html,body").scrollTop(0);
+})
+$.each($(".bar-sort"),function(index,item){
+    $(item).on("mouseenter",index,function(){
+        $(this).find(".original-img").hide()
+        .siblings("img").show();
+    })
+    $(item).on("mouseleave",index,function(){
+        $(this).find(".hover-img").hide()
+        .siblings("img").show();
+    })
+})
