@@ -489,13 +489,55 @@
     margin-right: 14px;
     margin-top: 10px;
 }
-.goods-detail .goods-big-pic img {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+#small{
     width: 482px;
     height: 482px;
+    position: relative;
+    float: left;
+}
+.goods-detail .goods-big-pic img {
+    width: 482px;
+    height: 482px;
+}
+#frame{
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 5px #000;
+    border-radius: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    /* display: none; */
+    background-image: url(//i8.mifile.cn/a1/pms_1533524874.99138408.jpg) no-repeat;
+    background-size: 482px 482px;
+}
+#big{
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    box-shadow: 0 0 5px #000;
+    margin-left: 100px;
+    position: relative;
+    float: right;
+    display: none;
+    z-index: 99;
+}
+#big img{
+    width: 1400px;
+    height: 1400px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#film{
+    width: 482px;
+    height: 482px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    cursor: none;
 }
 .goods-detail-desc .shape-container .detailBlock img {
     width: 100%;

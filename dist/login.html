@@ -38,9 +38,8 @@
                                 <input class="item_account" autocomplete="off" type="password" name="password" id="pwd" placeholder="密码">
                             </div>
                         </div>
-                        <div id="error"></div>
                         <div class="login-btn">
-                            <a class="btnadpt" id="login-button">登录</a>
+                            <input class="btnadpt" id="login-button" type="submit" value="登录">
                         </div>
                         <p class="tip clearfix">
                             <a href="javascript:void(0);" class="phone">手机短信登录/注册</a>
@@ -82,29 +81,5 @@
             <img src="https://account.xiaomi.com/static/res/9204d06/account-static/respassport/acc-2014/img/ghs.png"></span>京公网安备11010802020134号</a>-京ICP证110507号
         </p>
     </div>
-
-    <script src="script/jquery-3.3.1.js"></script>
-    <script src="script/jquery.cookie.js"></script>
-    <script>
-        var oUsr = document.getElementById("username");
-        var oPwd = document.getElementById("pwd");
-        var oBtn = document.getElementById("login-button");
-        var oError = document.getElementById("error");
-
-        oBtn.onclick = function(){
-            $.ajax({
-                type: 'GET',
-                url : "http://localhost:88/proxy/localhost:80/mi/login.php",
-                data : `username=${oUsr.value}&password=${oPwd.value}`
-            })
-            .then(function(res){
-                oError.innerHTML = res;
-                if(res == "登录成功"){
-                    location.href = "index.html";
-                }
-            })
-        }
-    
-    </script>
 </body>
 </html>

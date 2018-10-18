@@ -385,9 +385,14 @@
             <div class="goods-detail-info  clearfix J_goodsDetail">
                 <div class="container">
                     <div class="row">
-                        <div class="span13  J_mi_goodsPic_block goods-detail-left-info">
-                            <div class="goods-pic-box  " id="J_mi_goodsPicBox">
-                                <div class="goods-big-pic J_bigPicBlock">
+                        <div class="span13  goods-detail-left-info">
+                            <div class="goods-pic-box">
+                                <div id="small" class="goods-big-pic">
+                                    <div id="film"></div>
+                                    <div id="frame"></div>
+                                    <img src="//i8.mifile.cn/a1/pms_1533524874.99138408.jpg" class="J_goodsBigPic" id="J_BigPic">
+                                </div>
+                                <div id="big">
                                     <img src="//i8.mifile.cn/a1/pms_1533524874.99138408.jpg" class="J_goodsBigPic" id="J_BigPic">
                                 </div>
                                 <div class="goods-pic-loading">
@@ -600,6 +605,67 @@
                 .hide();
             })
         })
+    
+    
+        // 放大镜;
+        var oSmall = document.getElementById("small");
+        var oSmallImg = oSmall.children[2];
+        // 小框;
+        var oFrame = document.getElementById("frame");
+        var oBig = document.getElementById("big");
+        var oBigImg = oBig.children[0];
+
+        oSmall.onmouseenter = function(){
+            // 小框和大图都显示出来;
+            oBig.style.display = "block";
+            oFrame.style.display = "block";
+            oSmallImg.style.opacity = 0.3;
+        }
+        oSmall.onmouseleave = function(){
+            // 小框和大图都隐藏;
+            oBig.style.display = "none";
+            oFrame.style.display = "none";
+            oSmallImg.style.opacity = 1;
+        }
+        oSmall.onmousemove = function(event){
+            // 1. 获取定位的x,y 值;
+            var e = event || window.event;
+            var offsetX = e.offsetX;
+            var offsetY = e.offsetY;
+            // 2. 给元素设置的left 值 和top值;
+            var nLeft = offsetX - 50;
+            var nTop = offsetY - 50;
+            // 边界检测; 最小值 ; 最大值;
+            
+            // 最小值;
+            nLeft = nLeft < 0 ? 0 : nLeft;
+            nTop = nTop < 0 ? 0 : nTop;
+
+            // 最大值;
+            var maxLeft = oSmall.offsetWidth - oFrame.offsetWidth;
+            var maxTop = oSmall.offsetHeight - oFrame.offsetHeight;
+            
+            nLeft = nLeft > maxLeft ? maxLeft : nLeft;
+            nTop = nTop > maxTop ? maxTop : nTop;
+
+            oFrame.style.left = nLeft +"px";
+            oFrame.style.top = nTop + "px";
+
+            // 边界检测;
+            
+            // 比例 已知 是4;
+            // 比例分成两部分;
+            var propX = oBig.offsetWidth / oFrame.offsetWidth;
+            var propY = oBig.offsetHeight / oFrame.offsetHeight;
+
+            // console.log(propX,propY);
+            
+            oBigImg.style.left = -nLeft * propX + "px";
+            oBigImg.style.top = -nTop * propY + "px";
+
+            oFrame.style.backgroundPosition = `${-nLeft}px ${-nTop}px`
+        }   
+    
     </script>
 </body>
 </html>
