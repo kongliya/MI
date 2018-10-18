@@ -144,84 +144,68 @@ shopCar.init();
 
 // ***********瀑布流;************
 function WaterFall(){}
-WaterFall.prototype.init = function(){
-    // 进度条;
-    this.ul = document.querySelector(".waterfall .lists2");
-    // 加载第几页;
-    this.page = 0;
-    // 是否加载完了;
-    this.loaded = false;
-    
+$.extend(WaterFall.prototype,{
+    init(){
+        this.ul = $(".waterfall .lists2");
+        this.page = 0;
+        this.loaded = false;
 
-    // 绑定事件;
-    // 渲染页面;
-    this.handleEvent();
-    this.loadMsg()
-    .then((res)=>{
-        // console.log(res);
-        //json.parse 用于从一个字符串中解析出json 对象
-        res = typeof res == "string" ? JSON.parse(res) : res;
-        this.renderPag(res);
-
-    })
-}   
-WaterFall.prototype.handleEvent = function(){
-    // 滚动事件判定是否应该加载数据;
-    onscroll = this.iflLoad.bind(this);
-}
-WaterFall.prototype.loadMsg = function(){
-    // 请求的加载;
-    return new Promise((succ)=>{
-        // this => 实例化对象;
-        var xhr = new XMLHttpRequest();
-        var path = "http://localhost:88/proxy/api.douban.com/v2/movie/top250?start="+this.page * 20 + "&count=20";
-        xhr.open("GET",path);
-        xhr.send(null);
-        xhr.onload = function(){
-            succ(xhr.response);
-        }
-        this.page++;
-        // console.log(this.page);
-    })
-}
-WaterFall.prototype.renderPag = function(json){
-    var list = json.subjects;
-    var html = "";
-    for(var i = 0 ; i < list.length ; i ++){
-        html += `
-                <li class="con">
-                    <img class="large-img" src="${list[i].images.small}" alt="">
-                    <p class="list-title">${list[i].title}</p>
-                    <p class="goods-price">${list[i].rating.average} 元</p>
-                </li>
-                `
-    }
-    // 把渲染好的字符串放入页面之中;
-    this.ul.innerHTML += html;
-
-    // 渲染结束;
-    this.loaded = true;
-}
-WaterFall.prototype.iflLoad = function(){
-    if(this.loaded == false){
-        return 0;
-    }
-    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-    // 显示的高度有多高;
-    var showHeight = document.documentElement.clientHeight + scrollTop;
-    // 最后一个元素;
-    var aLi = document.querySelectorAll(".lists2 li");
-    var lastLi = aLi[aLi.length - 1];
-    if(lastLi.offsetTop <= showHeight + 300){
-        // 加载数据
+        this.bindEvent();
         this.loadMsg()
         .then((res)=>{
+            // console.log(res);
             res = typeof res == "string" ? JSON.parse(res) : res;
             this.renderPag(res);
         })
-        this.loaded = false;
+    },
+    bindEvent(){
+        onscroll = this.iflLoad.bind(this);
+    },
+    loadMsg(){
+        return new Promise((succ)=>{
+            var xhr = new XMLHttpRequest();
+            var path = "http://localhost:88/proxy/api.douban.com/v2/movie/top250?start="+this.page * 20 + "&count=20";
+            xhr.open("GET",path);
+            xhr.send(null);
+            xhr.onload = function(){
+                succ(xhr.response);
+            }
+            this.page++;
+        })
+    },
+    renderPag(json){
+        var list = json.subjects;
+        var html = "";
+        for(var i = 0 ; i < list.length ; i ++){
+            html += `
+                    <li class="con">
+                        <img class="large-img" src="${list[i].images.small}" alt="">
+                        <p class="list-title">${list[i].title}</p>
+                        <p class="goods-price">${list[i].rating.average} 元</p>
+                    </li>
+                    `
+        }
+        this.ul.html(html);
+        this.loaded = true;
+    },
+    iflLoad(){
+        if(this.loaded == false){
+            return 0;
+        }
+        var scrollTop = $("html,body").scrollTop();
+        var showHeight = document.documentElement.clientHeight + scrollTop;
+        var aLi = $(".lists2 li");
+        var lastLi = aLi[aLi.length - 1];
+        if(lastLi.offsetTop <= showHeight + 330){
+            this.loadMsg()
+            .then((res)=>{
+                res = typeof res == "string" ? JSON.parse(res) : res;
+                this.renderPag(res);
+            })
+            this.loaded = false;
+        }
     }
-}
+})
 function getName(arr){
     var res = "";
     for(var i = 0 ; i < arr.length ; i ++){

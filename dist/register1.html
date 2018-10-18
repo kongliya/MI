@@ -20,36 +20,21 @@
                         </div>
                     </div>
                     <div class="regbox">
-                        <p class="country">国家 / 地区</p>
-                        <p>
-                            <select name="" id="">
-                                <option value="">中国</option>
-                            </select>
-                            <p class="phone">成功注册帐号后，国家/地区将不能被修改</p>
-                        </p>
-                        <p class="country">手机号码</p>
-                       
-                        <div class="listwrap" id="select-cycode" _region="CN" _def_method="PH">
+                        <p class="country" style="margin-bottom:10px;font-size:16px;">设置密码：</p>
+                        <div class="listwrap">
                             <div class="listtit" id="reg-phone-select-cty">
-                                <div class="tits display_box c_b">
-                                    <p id="select-cycode-result">+86</p>
-                                    <i class="icon_arrow"></i>
+                               
+                                <div class="inputbg" style="margin-top : 40px;">
+                                    <input id="pwd"  style="width: 312px;left: 0;" type="password" name="password" placeholder="请输入密码">
                                 </div>
-                                <div class="inputbg">
-                                    <input id="phoneNo" type="tel" name="phone" style="top:0" placeholder="请输入手机号码">
-                                    <span class="error"></span>
+                                <div class="inputbg" style="margin-top : 40px;">
+                                    <input style="width: 312px;left: 0;" id="pwdConfirm" type="password" name="password" placeholder="再次输入密码">
                                 </div>
-
-                                <div class="inputbg">
-                                    <input id="code" type="text" name="code" style="top:10px;" placeholder="请输入验证码">
-                                    <span class="error2"></span>
-                                </div>
-                                <button id="codeBtn" class="code">点击获取</button>
                             </div>
                         </div>
                         <span class="error"></span>
                         <div class="reg-btn">
-                            <a href="register1.html" class="btn332 btn_reg_1 submit-step">立即注册</a>
+                            <a href="register2.html" class="btn332 btn_reg_1">下一步</a>
                         </div>
                     </div>
                     <div class="privacy_box">
@@ -79,52 +64,56 @@
             </div>
         </div>
     </div>
-    <script src="script/ajax.js"></script>
+
     <script>
-        var regPhone = /^1[34578]\d{9}$/;                  //   /^1[0-9]{10}$/
-        var oPhone = document.getElementById("phoneNo");
+        var oPwd = document.getElementById("pwd");
+        var oConfirmPwd = document.getElementById("pwdConfirm");
         var oError = document.querySelector(".error");
-        var oCodeBtn = document.getElementById("codeBtn");
-        var oCode = document.getElementById("code");
-
-        oPhone.onfocus = function(){
-            oError.innerHTML = "请输入正确的11位手机号码";
+        oPwd.onfocus = function(){
+            oError.innerHTML = "为了您的安全，请设置较复杂的密码";
+            oError.style.color = "#ff6700";
         }
-        oPhone.onblur = function(){
-            if(oPhone.value = ""){
-                oError.innerHTML = "请输入11位手机号码";
-            }
-            if(regPhone.test(oPhone.value)){
-                oError.innerHTML = "手机号输入正确,点击进入下一步";
-                oError.style.color = "green";
-            }else{
-                oError.innerHTML = "手机号格式错误,请输入正确的11位数字";
+        oPwd.onblur = function(){
+            if(oPwd.value.length < 6){
+                oError.innerHTML = "请输入至少六位密码";
                 oError.style.color = "#ff6700";
-                oError.style.borderColor = "#ff6700";
+                return 0;
             }
         }
-
-        var str = "";
-        oCodeBtn.onclick = function(){
-            for(var i = 0 ; i < 4; i ++){
-                var sLetter = "1234567890qwertyuioplkjhgfdsazxcvbnm"
-                var randomStr = sLetter[Math.round(Math.random() * (sLetter.length - 1))]
-                if(randomStr == undefined){
-                    randomStr = 0;
+           
+        oConfirmPwd.onblur = function(){
+            if(oPwd.value == oConfirmPwd.value){
+                var rate = 0;
+                var regPwd1 = /\d/;
+                if(regPwd1.test(oPwd.value)){
+                    rate ++;
                 }
-                str = str + randomStr;
-                oCodeBtn.innerHTML = str;
-            }
-        }
-        oCode.onfocus = function(){
-            oError.innerHTML = "点击按钮生成验证码";
-        }
-        oCode.onblur = function(){
-            if(str != oCode.value){
-                oError.innerHTML = "验证码输入错误，请重新输入";
-                oCode.value = "";
+                var regPwd2 = /[a-zA-Z]/;
+                if(regPwd2.test(oPwd.value)){
+                    rate ++;
+                }
+                var regPwd3 = /\!\@\#\$\%\^\&\*\(\)\_/;
+                if(regPwd3.test(oPwd.value)){
+                    rate ++;
+                }
+                switch(rate){
+                    case "1" : 
+                            oPwd.style.borderColor = "red";  
+                            oError.innerHTML = "密码风险较高，建议重新设置";   
+                            break;
+                    case "2" : 
+                            oPwd.style.borderColor = "#ff6700";     
+                            oError.innerHTML = "密码较安全，如果再加入特殊符号就好啦~"; 
+                            break;
+                    case "3" : 
+                            oPwd.style.borderColor = "green";     
+                            break;
+                            oError.innerHTML = "bingo ! ! !"; 
+                }
             }else{
-                oError.innerHTML = "输入正确";
+                oError.innerHTML = "两次密码输入不一致，请检查密码并重新输入";
+                oPwd.value = "";
+                oConfirmPwd.value = "";
             }
         }
     </script>
