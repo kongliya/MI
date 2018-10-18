@@ -32,7 +32,7 @@
                         <div class="listwrap" id="select-cycode" _region="CN" _def_method="PH">
                             <div class="listtit" id="reg-phone-select-cty">
                                 <div class="tits display_box c_b">
-                                    <p id="select-cycode-result">+86</p>
+                                    <p>+86</p>
                                     <i class="icon_arrow"></i>
                                 </div>
                                 <div class="inputbg">
@@ -47,9 +47,8 @@
                                 <button id="codeBtn" class="code">点击获取</button>
                             </div>
                         </div>
-                        <span class="error"></span>
                         <div class="reg-btn">
-                            <a href="register1.html" class="btn332 btn_reg_1 submit-step">立即注册</a>
+                            <a id="regBtn" href="javascript:void(0);" class="btn332 btn_reg_1">立即注册</a>
                         </div>
                     </div>
                     <div class="privacy_box">
@@ -79,54 +78,79 @@
             </div>
         </div>
     </div>
-    <script src="script/ajax.js"></script>
+    <script src="script/jquery-3.3.1.js"></script>
+    <script src="script/jquery.cookie.js"></script>
     <script>
         var regPhone = /^1[34578]\d{9}$/;                  //   /^1[0-9]{10}$/
         var oPhone = document.getElementById("phoneNo");
         var oError = document.querySelector(".error");
+        var oError2 = document.querySelector(".error2");
         var oCodeBtn = document.getElementById("codeBtn");
         var oCode = document.getElementById("code");
+        var oRegBtn = document.querySelector("#regBtn");
 
         oPhone.onfocus = function(){
             oError.innerHTML = "请输入正确的11位手机号码";
         }
         oPhone.onblur = function(){
-            if(oPhone.value = ""){
+            if(oPhone.value == ""){
                 oError.innerHTML = "请输入11位手机号码";
             }
             if(regPhone.test(oPhone.value)){
                 oError.innerHTML = "手机号输入正确,点击进入下一步";
-                oError.style.color = "green";
+                oPhone.style.color = "green";
             }else{
                 oError.innerHTML = "手机号格式错误,请输入正确的11位数字";
                 oError.style.color = "#ff6700";
-                oError.style.borderColor = "#ff6700";
+                oPhone.style.borderColor = "#ff6700";
             }
         }
-
-        var str = "";
-        oCodeBtn.onclick = function(){
+        
+        function randomCode(){
+            var str = "";
             for(var i = 0 ; i < 4; i ++){
                 var sLetter = "1234567890qwertyuioplkjhgfdsazxcvbnm"
                 var randomStr = sLetter[Math.round(Math.random() * (sLetter.length - 1))]
                 if(randomStr == undefined){
                     randomStr = 0;
                 }
-                str = str + randomStr;
+                str += randomStr;
                 oCodeBtn.innerHTML = str;
             }
+            // return str;
+        }
+        
+        oCodeBtn.onclick = function(){
+            randomCode();
         }
         oCode.onfocus = function(){
-            oError.innerHTML = "点击按钮生成验证码";
+            oError2.innerHTML = "点击按钮换一换";
         }
         oCode.onblur = function(){
-            if(str != oCode.value){
-                oError.innerHTML = "验证码输入错误，请重新输入";
-                oCode.value = "";
+            if(oCode.value == oCodeBtn.innerHTML || oCode.innerHTML != "" ){
+                oError2.innerHTML = "输入正确";
             }else{
-                oError.innerHTML = "输入正确";
+                oError2.innerHTML = "验证码输入错误，请重新输入";
+                oCode.value = "";
+                randomCode();
             }
         }
+        // cookie("user","1111")
+        oRegBtn.onclick = function(){
+            if(oCode.value != "" && oPhone.value != ""){
+                $.cookie("phone",oPhone.value);
+                $.ajax({
+                    type: 'GET',
+                    url : "http://localhost:88/proxy/localhost:80/mi/register.php",
+                    data : `username=${$.cookie("phone")}`
+                })
+                .then(function(res){
+                    oError2.innerHTML = res;
+                    location.href = "register1.html";
+                })
+            }
+        }
+        
     </script>
 </body>
 </html>

@@ -19,6 +19,7 @@ body{
 .con{
     background: #fff;
     padding: 34px 34px 30px;
+    width: 854px;
 }
 .external_logo_area {
     padding-bottom: 40px;
@@ -84,7 +85,7 @@ body{
     color: #333;
     position: relative;
     right: -344px;
-    top: 30px;
+    top: 25px;
 }
 .listwrap {
     float: left;
@@ -171,18 +172,20 @@ body{
 }
 .btn_reg_1:hover {
     background: #ff936a;
+    color: #fff;
 }
 .btn332 {
     display: inline-block;
     width: 330px;
     height: 42px;
-    margin: 0 auto;
+    margin: 30px auto 0;
     line-height: 42px;
     text-align: center;
     font-size: 14px;
     cursor: pointer;
     border: 1px solid #e8e8e8;
     overflow: hidden;
+    text-align: center;
 }
 
 .privacy_box {

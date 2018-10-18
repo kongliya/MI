@@ -32,9 +32,9 @@
                                 </div>
                             </div>
                         </div>
-                        <span class="error"></span>
+                        <span class="error" style="right:0;top:-10px;"></span>
                         <div class="reg-btn">
-                            <a href="register2.html" class="btn332 btn_reg_1">下一步</a>
+                            <a id="regBtn" href="javascript:void(0);" class="btn332 btn_reg_1">设置密码</a>
                         </div>
                     </div>
                     <div class="privacy_box">
@@ -64,11 +64,14 @@
             </div>
         </div>
     </div>
-
+    <script src="script/jquery-3.3.1.js"></script>
+    <script src="script/jquery.cookie.js"></script>
     <script>
         var oPwd = document.getElementById("pwd");
         var oConfirmPwd = document.getElementById("pwdConfirm");
         var oError = document.querySelector(".error");
+        var oRegBtn = document.querySelector("#regBtn");
+
         oPwd.onfocus = function(){
             oError.innerHTML = "为了您的安全，请设置较复杂的密码";
             oError.style.color = "#ff6700";
@@ -77,7 +80,6 @@
             if(oPwd.value.length < 6){
                 oError.innerHTML = "请输入至少六位密码";
                 oError.style.color = "#ff6700";
-                return 0;
             }
         }
            
@@ -97,15 +99,15 @@
                     rate ++;
                 }
                 switch(rate){
-                    case "1" : 
+                    case 1 : 
                             oPwd.style.borderColor = "red";  
                             oError.innerHTML = "密码风险较高，建议重新设置";   
                             break;
-                    case "2" : 
+                    case 2 : 
                             oPwd.style.borderColor = "#ff6700";     
                             oError.innerHTML = "密码较安全，如果再加入特殊符号就好啦~"; 
                             break;
-                    case "3" : 
+                    case 3 : 
                             oPwd.style.borderColor = "green";     
                             break;
                             oError.innerHTML = "bingo ! ! !"; 
@@ -114,6 +116,22 @@
                 oError.innerHTML = "两次密码输入不一致，请检查密码并重新输入";
                 oPwd.value = "";
                 oConfirmPwd.value = "";
+            }
+        }
+
+        oRegBtn.onclick = function(){
+            if(oPwd.value == oConfirmPwd.value){
+                $.ajax({
+                    type: 'GET',
+                    url : "http://localhost:88/proxy/localhost:80/mi/register2.php",
+                    data : `username=${$.cookie("phone")}&password=${oPwd.value}`
+                })
+                .then(function(res){
+                    oError.innerHTML = res;
+                    if(res == "注册成功"){
+                        location.href = "register2.html";
+                    }
+                })
             }
         }
     </script>
