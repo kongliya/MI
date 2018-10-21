@@ -42,7 +42,7 @@ gulp.task('connect',function(){
 // localhost:88/proxy/目标;
 
 gulp.task("watch",()=>{
-	gulp.watch("index.html",["html","sass"]);
+	gulp.watch("*.html",["html","sass"]);
 	gulp.watch("css/*.css",["html","css"]);
 	gulp.watch("js/*.js",["html","script"]);
 	gulp.watch("sass/*.scss",["html","sass"]);

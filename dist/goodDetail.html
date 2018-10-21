@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>【小米运动蓝牙耳机青春版 黑色】蓝牙耳机-小米商城</title>
     <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="iconfont/css/iconfont.css">
     <link rel="stylesheet" href="css/goodDetail.css">
 </head>
 <body>
@@ -384,25 +385,24 @@
         <div class="goods-detail-wrap">
             <div class="goods-detail-info  clearfix J_goodsDetail">
                 <div class="container">
-                    <div class="row">
+                    <div class="row clearfix">
                         <div class="span13  goods-detail-left-info">
                             <div class="goods-pic-box">
                                 <div id="small" class="goods-big-pic">
                                     <div id="film"></div>
                                     <div id="frame"></div>
-                                    <img src="//i8.mifile.cn/a1/pms_1533524874.99138408.jpg" class="J_goodsBigPic" id="J_BigPic">
+                                    <img src="//i8.mifile.cn/a1/pms_1533524874.99138408.jpg">
                                 </div>
                                 <div id="big">
-                                    <img src="//i8.mifile.cn/a1/pms_1533524874.99138408.jpg" class="J_goodsBigPic" id="J_BigPic">
+                                    <img src="//i8.mifile.cn/a1/pms_1533524874.99138408.jpg">
                                 </div>
                                 <div class="goods-pic-loading">
                                     <div class="loader loader-gray"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="span7 goods-info-rightbox">
-                            <div class="goods-info-leftborder"></div>
-                            <dl class="goods-info-box ">
+                        <div class="span7 goods-info-rightbox" id="none">
+                            <dl class="goods-info-box">
                                 <dt class="goods-info-head">
                                     <dl id="J_goodsInfoBlock">
                                         <dt id="goodsName" class="goods-name">小米运动蓝牙耳机青春版</dt>
@@ -428,9 +428,9 @@
                                             </div>
                                         </dd>
                                         <dd class="goods-info-head-price clearfix">
-                                            <b class="J_mi_goodsPrice">99</b> <i>&nbsp;元 </i>
+                                            <b>99</b> <i>&nbsp;元 </i>
                                             <del>
-                                                <span class="J_mi_marketPrice"></span>
+                                                <span></span>
                                             </del>
                                         </dd>
                                         <dd class="goods-info-head-colors clearfix">
@@ -450,7 +450,7 @@
                                         </dd>
                                         <dd class="goods-info-head-cart" id="goodsDetailBtnBox">
                                             <div class="buy-wrap">
-                                                <a href="//cart.mi.com/cart/add/2182700041" id="goodsDetailAddCartBtn" class="btn  btn-primary goods-add-cart-btn" > 加入购物车 </a>
+                                                <a href="//cart.mi.com/cart/add/2182700041" class="btn  btn-primary goods-add-cart-btn" > 加入购物车 </a>
                                             </div>
                                             
                                         </dd>
@@ -462,7 +462,7 @@
                 </div>
             </div>
             
-            <div class="goods-detail-desc J_itemBox J_extraContent" id="goodsDesc">
+            <div class="goods-detail-desc clearfix">
                 <div class="container">
                     <div class="shape-container">
                         <div class="detailBlock">
@@ -614,17 +614,20 @@
         var oFrame = document.getElementById("frame");
         var oBig = document.getElementById("big");
         var oBigImg = oBig.children[0];
+        var oNone = document.getElementById("none");
 
         oSmall.onmouseenter = function(){
             // 小框和大图都显示出来;
             oBig.style.display = "block";
             oFrame.style.display = "block";
+            oNone.style.display = "none";
             oSmallImg.style.opacity = 0.3;
         }
         oSmall.onmouseleave = function(){
             // 小框和大图都隐藏;
             oBig.style.display = "none";
             oFrame.style.display = "none";
+            oNone.style.display = "block";
             oSmallImg.style.opacity = 1;
         }
         oSmall.onmousemove = function(event){
