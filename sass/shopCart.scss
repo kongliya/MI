@@ -112,6 +112,7 @@
     .carts{
         height: 80px;
         margin-bottom: 10px;
+        position: relative;
         .cart-txt{
             float: left;
             margin-left: 14px;
@@ -119,13 +120,12 @@
                 font-size: 14px;
                 height: 80px;
                 line-height: 80px;
-                position: relative;
                 i,em{
                     display: inline-block;
                     float: left;
                 }
                 .title{
-                    width: 112px;
+                    width: 102px;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
@@ -135,7 +135,7 @@
                     font-size: 14px;
                     margin-left: 25px;
                 }  
-                span{
+                a{
                     position: absolute;
                     right: 0px;
                     bottom: -26px;

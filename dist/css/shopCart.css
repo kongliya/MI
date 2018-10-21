@@ -86,20 +86,20 @@
 
 .topbar-cart .carts {
   height: 80px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  position: relative; }
   .topbar-cart .carts .cart-txt {
     float: left;
     margin-left: 14px; }
     .topbar-cart .carts .cart-txt .txt {
       font-size: 14px;
       height: 80px;
-      line-height: 80px;
-      position: relative; }
+      line-height: 80px; }
       .topbar-cart .carts .cart-txt .txt i, .topbar-cart .carts .cart-txt .txt em {
         display: inline-block;
         float: left; }
       .topbar-cart .carts .cart-txt .txt .title {
-        width: 112px;
+        width: 102px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap; }
@@ -107,7 +107,7 @@
         color: #ff6700;
         font-size: 14px;
         margin-left: 25px; }
-      .topbar-cart .carts .cart-txt .txt span {
+      .topbar-cart .carts .cart-txt .txt a {
         position: absolute;
         right: 0px;
         bottom: -26px;

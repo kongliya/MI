@@ -100,9 +100,11 @@ $.extend(ShopCar.prototype,{
 		var html = "";
 		for(var i = 0; i < this.json.length; i ++){
 			html += `<li data-id="${this.json[i].goods_id}" class="con">
-						<img class="large-img" src="${this.json[i].img}" alt="">
-						<p class="list-title">${this.json[i].goods_name}</p>
-						<p class="goods-price">${this.json[i].goods_price} 元</p>
+						<div class="page">
+							<img class="large-img" src="${this.json[i].img}" alt="">
+							<p class="list-title">${this.json[i].goods_name}</p>
+							<p class="goods-price">${this.json[i].goods_price} 元</p>
+						</div>
 						<button class="addCart" data-id="${this.json[i].goods_id}">添加到购物车</button>
 					</li>`;
 					// console.log(this.main)
@@ -115,6 +117,7 @@ $.extend(ShopCar.prototype,{
 		$(".topbar-cart").on("mouseleave",function(){
 			$(".topbar-cart").find(".cart-menu").hide();
 		});
+		
 	},
 	addCar(event){
 		// 怎么知道将谁加入的购物车 => 通过 goods-id;
@@ -170,13 +173,13 @@ $.extend(ShopCar.prototype,{
 			for(var j = 0 ; j < this.json.length; j ++){
 				if(cookieArray[i].id == this.json[j].goods_id){
 					html +=`<li data-id=${cookieArray[i].id} class="carts">
-								<img style="width:80px; height:80px;float:left;" src="${this.json[i].img}" alt="">
+								<img style="width:80px; height:80px;float:left;" src="${this.json[j].img}" alt="">
 								<div class="cart-txt">
 									<p class="txt">
-										<i class="title">${this.json[i].goods_name}</i>
+										<i class="title">${this.json[j].goods_name}</i>
 										<em class="goodNo"> X ${cookieArray[i].num}</em>
-										<i class="cart-price">${Math.round(this.json[i].goods_price * cookieArray[i].num)} 元</i>
-										<span>删除</span>
+										<i class="cart-price">${Math.round(this.json[j].goods_price * cookieArray[i].num)} 元</i>
+										<a href="javascript:void(0);" onclick="remove(${i})">删除</a>
 									</p>
 								</div>
 							</li>
@@ -200,21 +203,39 @@ $.extend(ShopCar.prototype,{
 		}
 		$(".topbar-cart").find(".cart-num").html(`(`+sum+`)`);
 	}
+	
 })
+
 var shopCar = new ShopCar();
 shopCar.init();
-console.log($(".cart-lists"));
 
 // ***********页面跳转**********
-$(".waterfall .lists").on("click", ".con", function(event) {
-	var target = event.target;
+$(".waterfall .lists").on("click.kl", ".con", function(event) {
 
-	var list = $(target).parents(".con")[0];
-	console.log($(target).parents(".con")[0])
+	var target = event.target;
+	var listt = $(target).parents(".con")[0];
+	var list = $(target).parents(".con").find("button");
 	var aLi = Array.from($(".lists .con"));
-	if (aLi.indexOf(list) != -1) {
-		$.cookie("goodsId", list.getAttribute("data-id"));
-		location.href = "goodDetail.html";
+	console.log($(target)[0],list[0]);
+	if($(target)[0] != list[0]){
+		if (aLi.indexOf(listt) != -1) {
+			$.cookie("goodsId", listt.getAttribute("data-id"));
+			location.href = "goodDetail.html";
+		}else{
+			return 0;
+		}
 	}
 })
 
+// ***********购物车删除**********
+function remove(i){
+	var cookie;
+	if(!(cookie = $.cookie("shopCar"))){
+		return 0;
+	}
+	var cookieArray = JSON.parse(cookie);
+	cookieArray.splice(i,1);
+	$.cookie("shopCar",JSON.stringify(cookieArray));
+	shopCar.showList();
+	shopCar.listSum();
+}
