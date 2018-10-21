@@ -89,7 +89,7 @@
         }
         .addCart{
             width: 220px;
-            border: none;
+            // border: none;
             border-radius: 5px;
             background: #ff6700;
             outline: none;
@@ -119,6 +119,7 @@
                 font-size: 14px;
                 height: 80px;
                 line-height: 80px;
+                position: relative;
                 i,em{
                     display: inline-block;
                     float: left;
@@ -133,7 +134,13 @@
                     color: #ff6700;
                     font-size: 14px;
                     margin-left: 25px;
-                }   
+                }  
+                span{
+                    position: absolute;
+                    right: 0px;
+                    bottom: -26px;
+                    cursor: pointer;
+                }
                 .goodNo{
                     font-size: 12px;
                 }

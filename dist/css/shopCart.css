@@ -71,7 +71,6 @@
       margin-bottom: 10px; }
     .waterfall .con .addCart {
       width: 220px;
-      border: none;
       border-radius: 5px;
       background: #ff6700;
       outline: none;
@@ -94,7 +93,8 @@
     .topbar-cart .carts .cart-txt .txt {
       font-size: 14px;
       height: 80px;
-      line-height: 80px; }
+      line-height: 80px;
+      position: relative; }
       .topbar-cart .carts .cart-txt .txt i, .topbar-cart .carts .cart-txt .txt em {
         display: inline-block;
         float: left; }
@@ -107,5 +107,10 @@
         color: #ff6700;
         font-size: 14px;
         margin-left: 25px; }
+      .topbar-cart .carts .cart-txt .txt span {
+        position: absolute;
+        right: 0px;
+        bottom: -26px;
+        cursor: pointer; }
       .topbar-cart .carts .cart-txt .txt .goodNo {
         font-size: 12px; }

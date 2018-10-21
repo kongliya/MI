@@ -299,3 +299,5 @@ $.each($(".bar-sort"),function(index,item){
         .siblings("img").show();
     })
 })
+
+
