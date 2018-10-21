@@ -119,7 +119,7 @@ $(".brick-item-m").on({
 })
 
 // ************闪购倒计时************;
-var endTime = new Date("2018/10/31");
+var endTime = new Date("2018/12/31");
 var endMs = endTime.getTime();
 
 var timer = null;
